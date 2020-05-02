@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login"
+    android:orientation="vertical"
+    android:background="@drawable/gradient">
+
+    <TextView
+        android:id="@+id/login_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:text="Hello there,"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        tools:fontFamily="@font/amaranth" />
+
+
+    <TextView
+        android:id="@id/login_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        app:fontFamily="@font/amaranth"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="75dp"
+        android:text="welcome back!"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        app:fontFamily="@font/amaranth" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="150dp"
+        android:paddingTop="40dp"
+        android:orientation="vertical"
+        app:errorEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/email"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="@android:color/white"
+            android:inputType="textEmailAddress"
+            app:fontFamily="@font/amaranth"
+
+            />
+
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="180dp"
+        android:orientation="vertical"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/password"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textColorHint="@android:color/white"
+            android:inputType="textPassword"
+            android:paddingTop="80dp"
+            app:fontFamily="@font/amaranth"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/button_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="320dp"
+        android:background="#000000"
+        android:textColor="@android:color/white"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/textview_new_here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New here ?"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="400dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="100dp"
+            android:textSize="15sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up instead."
+            android:textColor="@android:color/white"
+            android:layout_marginTop="400dp"
+            android:layout_toRightOf="@id/textview_new_here"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+</RelativeLayout>
