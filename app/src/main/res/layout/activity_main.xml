@@ -7,6 +7,167 @@
     android:orientation="vertical"
     tools:context=".MainActivity"
     android:background="@drawable/gradient">
+    <!--Get on Board heading-->
+    <TextView
+        android:id="@+id/regHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="Get on Board"
+        android:textColor="@android:color/white"
+        android:textSize="35sp"
+        tools:fontFamily="serif" />
+
+    <!--TextInputLayout for name edit field-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="150dp"
+        android:paddingTop="10dp"
+        android:orientation="vertical"
+        app:errorEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/regName"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:textColorHint="@android:color/white"
+            android:inputType="text"
+            app:fontFamily="@font/amaranth"
+            android:textColor="@android:color/white"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--TextInputLayout for email field-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="150dp"
+        android:paddingTop="60dp"
+        android:orientation="vertical"
+        app:errorEnabled="true">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/regEmail"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:textColorHint="@android:color/white"
+            android:inputType="textEmailAddress"
+            app:fontFamily="@font/amaranth"
+            android:textColor="@android:color/white"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--TextInputLayout for password field-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="150dp"
+        android:paddingTop="110dp"
+        android:orientation="vertical"
+        app:errorEnabled="true"
+        app:passwordToggleEnabled="true">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/regPassword"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:textColorHint="@android:color/white"
+            android:inputType="textPassword"
+            app:fontFamily="@font/amaranth"
+            android:textColor="@android:color/white"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <!--InputLayout for phone number-->
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="150dp"
+        android:paddingTop="160dp"
+        android:orientation="vertical"
+        app:errorEnabled="true"
+        app:counterEnabled="true"
+        app:counterMaxLength="10">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/regPhoneNumber"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number"
+            android:textColorHint="@android:color/white"
+            android:inputType="number"
+            app:fontFamily="@font/amaranth"
+            android:textColor="@android:color/white"
+            />
+
+
+
+    </android.support.design.widget.TextInputLayout>
+
+    <!--sign up button-->
+    <Button
+        android:id="@+id/regButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign up"
+        android:gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="390dp"
+        android:background="#000000"
+        android:textColor="@android:color/white"
+        />
+
+    <!--horizontal linear layout for "already a user?" and "sign in "-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!--textview for "already a user?"-->
+        <TextView
+            android:id="@+id/reg_already_a_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Already a user. "
+            android:textColor="@android:color/white"
+            android:layout_marginTop="460dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="130dp"
+            android:textSize="15sp"/>
+
+        <!--textview for sign in-->
+        <TextView
+            android:id="@+id/regSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="460dp"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
 
 
 

@@ -8,8 +8,9 @@
     android:orientation="vertical"
     android:background="@drawable/gradient">
 
+    <!--TextView for "Hello there,"-->
     <TextView
-        android:id="@+id/login_heading"
+        android:id="@+id/loginHeading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="30dp"
@@ -18,18 +19,7 @@
         android:textSize="35sp"
         tools:fontFamily="@font/amaranth" />
 
-
-    <TextView
-        android:id="@id/login_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
-        app:fontFamily="@font/amaranth"/>
-
+    <!--TextView for "welcome back"-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,6 +31,7 @@
         android:textSize="35sp"
         app:fontFamily="@font/amaranth" />
 
+    <!--TextInputLayout for email-->
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,7 +46,7 @@
         app:errorEnabled="true">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/email"
+            android:id="@+id/loginEmail"
             android:layout_width="349dp"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -68,6 +59,7 @@
 
     </android.support.design.widget.TextInputLayout>
 
+    <!--TextInputLayout for password-->
     <android.support.design.widget.TextInputLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,57 +68,61 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="13dp"
         android:layout_marginLeft="13dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="250dp"
         android:orientation="vertical"
         app:errorEnabled="true"
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/password"
+            android:id="@+id/loginPassword"
             android:layout_width="349dp"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:textColorHint="@android:color/white"
             android:inputType="textPassword"
-            android:paddingTop="80dp"
             app:fontFamily="@font/amaranth"/>
 
     </android.support.design.widget.TextInputLayout>
 
+    <!--button for signing in-->
     <Button
-        android:id="@+id/button_sign_in"
+        android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in"
         android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="360dp"
         android:background="#000000"
         android:textColor="@android:color/white"
         />
-
+    <!--horizontal linear layout for "new here" and "sign up "-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
+        <!--TextView for "new here?"-->
         <TextView
             android:id="@+id/textview_new_here"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New here ?"
             android:textColor="@android:color/white"
-            android:layout_marginTop="400dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="100dp"
+            android:layout_marginTop="430dp"
+            android:layout_marginLeft="120dp"
             android:textSize="15sp"/>
+
+        <!--Texrview for Sign up instead-->
         <TextView
+            android:id="@+id/loginSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign up instead."
+            android:text=" Sign up instead."
             android:textColor="@android:color/white"
-            android:layout_marginTop="400dp"
-            android:layout_toRightOf="@id/textview_new_here"
+            android:layout_marginTop="430dp"
             android:textSize="15sp"/>
 
     </LinearLayout>
+
 </RelativeLayout>
