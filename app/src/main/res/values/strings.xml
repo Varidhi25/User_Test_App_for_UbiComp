@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">User App</string>
+    <string name="vegetable">Vegetable</string>
+    <string name="fruit">Fruit</string>
+    <string name="cake">Cake</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="bread">Bread</string>
+    <string name="softDrink">Soft Drink</string>
+    <string name="coldDrink">Cold Drink</string>
+    <string name="juice">Juice</string>
+    <string name="milkshake">Milkshake</string>
+    <string name="water">Water</string>
+    <string name="milk">Milk</string>
+    <string name="pudding">Pudding</string>
+    <string name="iceCream">Ice-cream</string>
+    <string name="sauce">Sauce</string>
+    <string name="jam">Jam</string>
+    <string name="butter">Butter</string>
 </resources>
