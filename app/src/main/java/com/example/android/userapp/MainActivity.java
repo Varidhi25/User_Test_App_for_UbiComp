@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.userapp.database.CategoryDbHelper;
 import com.example.android.userapp.database.RegisterDbHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,34 +45,46 @@ public class MainActivity extends AppCompatActivity {
            //implement the onClick method
             @Override
             public void onClick(View v) {
-               //get the user inputs
-               String Name=e1.getText().toString().trim();
-               String Email=e2.getText().toString().trim();
-               int PhoneNo= Integer.parseInt(e3.getText().toString());
-               String Password =e4.getText().toString().trim();
+
 
                //check if any of the fields are empty
-                if(Name.equals("") || Email.equals("") || e3.getText().toString().equals("") || Password.equals("")){
+                if(e1.getText().toString().trim().equals("") || e2.getText().toString().trim().equals("") || e3.getText().toString().equals("") ||e4.getText().toString().trim().equals("")){
                     Toast.makeText(getApplicationContext(),"Some of the fields are empty!!!", Toast.LENGTH_SHORT).show();
                 }
                 //if none of the fields are empty
               else{
+                    //get the user inputs
+                    String Name=e1.getText().toString().trim();
+                    String Email=e2.getText().toString().trim();
+                    long PhoneNo= Long.parseLong(e3.getText().toString());
+                    String Password =e4.getText().toString().trim();
                   Boolean checkmail = db.checkEmail(Email);
-                    //if the user doesn't exist already
-                  if(checkmail==true){
 
-                      Boolean insert= db.insertUser(Name,Email,Password,PhoneNo);
+                  if(e3.getText().toString().length() == 10){
+                      //if the user doesn't exist already
+                      if(checkmail==true){
 
-                      //check if database updated successfully
-                      if(insert==true){
-                          Toast.makeText(getApplicationContext(),"Registered Successfully.",Toast.LENGTH_SHORT).show();
+                          Boolean insert= db.insertUser(Name,Email,Password,PhoneNo);
+
+                          //check if database updated successfully
+                          if(insert==true){
+                              Toast.makeText(getApplicationContext(),"Registered Successfully.",Toast.LENGTH_SHORT).show();
+                              Intent subscribe=new Intent(MainActivity.this,Subscribe.class);
+                              subscribe.putExtra("rEmail",Email);
+                              startActivity(subscribe);
+                              finish();
+                          }
+                      }
+
+                      //if the user exists already
+                      else{
+                          Toast.makeText(getApplicationContext(),"Account already exits, Try to Sign in instead.",Toast.LENGTH_SHORT).show();
                       }
                   }
-
-                  //if the user exists already
-                   else{
-                      Toast.makeText(getApplicationContext(),"Account already exits, Try to Sign in instead.",Toast.LENGTH_SHORT).show();
+                  else{
+                      Toast.makeText(getApplicationContext(),"Invalid Phone Number, Re-enter.",Toast.LENGTH_SHORT).show();
                   }
+
 
                 }
             }

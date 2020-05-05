@@ -52,6 +52,8 @@ public class RegisterDbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
        String SQL_DROP_TABLE ="DROP TABLE IF EXISTS "+ RegisterContract.RegisterEntry.TABLE_NAME +" ;";
+       db.execSQL(SQL_DROP_TABLE);
+
     }
 
     /*
@@ -59,7 +61,7 @@ public class RegisterDbHelper extends SQLiteOpenHelper {
      param(Name, Email, PhoneNo, Password)
      returns true/false
      */
-    public boolean insertUser(String Name, String Email, String Password, int PhoneNo){
+    public boolean insertUser(String Name, String Email, String Password, long PhoneNo){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -105,5 +107,32 @@ public class RegisterDbHelper extends SQLiteOpenHelper {
 
         //if one of them is incorrect
         else return false;
+    }
+
+    /*
+     *method to get the id of the category
+      @param email
+      * It returns the id of the passed email  if exists else returns -1;
+     */
+    public long getRID(String email) {
+        //get the register id of the user
+
+        SQLiteDatabase data = this.getReadableDatabase();
+        Cursor cursor = data.rawQuery("SELECT " + RegisterContract.RegisterEntry.COLUMN_R_ID + " FROM " + RegisterContract.RegisterEntry.TABLE_NAME + " WHERE " +
+                RegisterContract.RegisterEntry.COLUMN_R_EMAIL + " = ?", new String[]{email});
+        if (cursor.getCount()>0) {
+            String R_ID;
+            if (cursor.moveToFirst()){
+                while(!cursor.isAfterLast()){
+                    R_ID = cursor.getString(cursor.getColumnIndex(RegisterContract.RegisterEntry.COLUMN_R_ID));
+                    cursor.moveToNext();
+                    cursor.close();
+                    return Long.parseLong(R_ID);
+                }
+
+            }
+
+        } else return -1;
+        return 0;
     }
 }

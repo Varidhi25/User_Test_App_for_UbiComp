@@ -1,10 +1,12 @@
 package com.example.android.userapp;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.userapp.database.RegisterDbHelper;
@@ -13,7 +15,7 @@ public class Login extends AppCompatActivity {
     // create references for all fields of Register form
     TextInputEditText e1,e2;
     Button b;
-
+    TextView t1;
     //get the reference of RegisterDbHelper class
     RegisterDbHelper db;
     @Override
@@ -26,7 +28,7 @@ public class Login extends AppCompatActivity {
 
         e1=(TextInputEditText) findViewById(R.id.loginEmail);
         e2=(TextInputEditText) findViewById(R.id.loginPassword);
-
+        t1=(TextView) findViewById(R.id.loginSignUp);
         b=(Button) findViewById(R.id.loginButton);
 
         /*create OnListener function
@@ -51,7 +53,12 @@ public class Login extends AppCompatActivity {
                   Boolean emailPassword= db.emailPasswordCheck(Email,Password);
                   //if both match
                   if(emailPassword==true){
-                      Toast.makeText(getApplicationContext(),"Login successful!!!", Toast.LENGTH_SHORT).show();
+                      Toast.makeText(getApplicationContext(),"Login successful, Welcome back.", Toast.LENGTH_SHORT).show();
+
+                      //opens query page after successful login
+                      Intent subscribe=new Intent(Login.this,Query.class);
+                      startActivity(subscribe);
+                      finish();
                   }
                   //if email or password doesnt match
                   else{
@@ -62,6 +69,17 @@ public class Login extends AppCompatActivity {
                 else{
                     Toast.makeText(getApplicationContext(),"You are not registered. Please register by signing up.", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        //OnClickListener for Sign up TextView
+        t1.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                //to open register page
+                Intent register= new Intent(Login.this,MainActivity.class);
+                startActivity(register);
+
             }
         });
 
