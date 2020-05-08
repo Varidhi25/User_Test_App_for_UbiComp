@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Query"></activity>
+        <activity android:name=".Delete"></activity>
+        <activity android:name=".Add" />
+        <activity android:name=".Update" />
+        <activity android:name=".Display" />
+        <activity
+            android:name=".Query"
+            android:label="Query" />
         <activity
             android:name=".Subscribe"
             android:label="Subscribe" />

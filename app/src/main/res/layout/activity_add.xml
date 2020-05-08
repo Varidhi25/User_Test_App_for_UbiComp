@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    tools:context=".Add">
+
+    <TextView
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:layout_marginTop="55dp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/amaranth"
+        android:layout_marginLeft="10dp"
+        android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Fill the information"
+            android:textSize="25sp"
+            android:fontFamily="@font/amaranth"
+            android:textColor="@android:color/white"
+            android:layout_margin="50dp"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="180dp"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            app:errorEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/itemName"
+                android:layout_width="349dp"
+                android:layout_height="wrap_content"
+                android:hint="Name of the object"
+                android:textColorHint="@android:color/white"
+                android:inputType="text"
+                android:textColor="@android:color/white"
+                />
+        </android.support.design.widget.TextInputLayout>
+        <!--    <TextView-->
+        <!--        android:layout_width="wrap_content"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:text="Select the main Category"-->
+        <!--        android:layout_marginTop="190dp"-->
+        <!--        android:layout_marginLeft="13dp"-->
+        <!--        android:textSize="16sp"-->
+        <!--        />-->
+        <!--    <Spinner-->
+        <!--        android:layout_width="349dp"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:layout_marginLeft="13dp"-->
+        <!--        android:layout_marginTop="220dp"-->
+        <!--        android:entries="@array/mCategory"-->
+        <!--        />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select the Category"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="13dp"
+            android:textSize="16sp"
+            />
+        <Spinner
+            android:id="@+id/itemCategory"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="290dp"
+            android:entries="@array/Category"
+            />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="300dp"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            app:errorEnabled="true">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/itemQuantity"
+                android:layout_width="349dp"
+                android:layout_height="wrap_content"
+                android:hint="Quantity"
+                android:textColorHint="@android:color/white"
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/white"
+                />
+        </android.support.design.widget.TextInputLayout>
+    <TextView
+        android:id="@+id/expDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Expiry Date"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="13dp"
+        android:textSize="20sp"
+        />
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="450dp"
+                android:text="Add"/>
+
+
+</RelativeLayout>

@@ -1,19 +1,43 @@
 <resources>
     <string name="app_name">User App</string>
-    <string name="vegetable">vegetable</string>
-    <string name="fruit">fruit</string>
-    <string name="cake">cake</string>
-    <string name="chocolate">chocolate</string>
-    <string name="bread">bread</string>
-    <string name="softDrink">softDrink</string>
-    <string name="coldDrink">coldDrink</string>
-    <string name="juice">juice</string>
-    <string name="milkshake">milkshake</string>
-    <string name="water">water</string>
-    <string name="milk">milk</string>
-    <string name="pudding">pudding</string>
-    <string name="iceCream">iceCream</string>
-    <string name="sauce">sauce</string>
-    <string name="jam">jam</string>
-    <string name="butter">butter</string>
+    <string name="vegetable">Vegetable</string>
+    <string name="fruit">Fruit</string>
+    <string name="cake">Cake</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="bread">Bread</string>
+    <string name="softDrink">SoftDrink</string>
+    <string name="coldDrink">ColdDrink</string>
+    <string name="juice">Juice</string>
+    <string name="milkshake">Milkshake</string>
+    <string name="water">Water</string>
+    <string name="milk">Milk</string>
+    <string name="pudding">Pudding</string>
+    <string name="iceCream">IceCream</string>
+    <string name="sauce">Sauce</string>
+    <string name="jam">Jam</string>
+    <string name="butter">Butter</string>
+
+    <string-array name="mCategory">
+        <item>Solid</item>
+        <item>Liquid</item>
+        <item>Semi-solid</item>
+    </string-array>
+    <string-array name="Category">
+        <item>vegetable</item>
+        <item>fruit</item>
+        <item>cake</item>
+        <item>chocolate</item>
+        <item>bread</item>
+        <item>softDrink</item>
+        <item>coldDrink</item>
+        <item>juice</item>
+        <item>milkshake</item>
+        <item>water</item>
+        <item>milk</item>
+        <item>pudding</item>
+        <item>iceCream</item>
+        <item>sauce</item>
+        <item>jam</item>
+        <item>butter</item>
+    </string-array>
 </resources>

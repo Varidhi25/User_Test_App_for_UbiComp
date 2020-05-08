@@ -13,7 +13,9 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = CategoryDbHelper.class.getSimpleName();
 
 
-    /** Name of the database file */
+    /**
+     * Name of the database file
+     */
     private static final String DATABASE_NAME = "Category.db";
 
 
@@ -23,6 +25,7 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
 
     /**
      * Constructs a new instance of {@link CategoryDbHelper}.
+     *
      * @param context of the app
      */
     public CategoryDbHelper(@Nullable Context context) {
@@ -38,8 +41,8 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
         /*This is create table statement for the Category Database
          * Get the constants created from the CategoryContract Class
          */
-        String SQL_CATEGORY_CREATE_TABLE="CREATE TABLE "+ CategoryContract.CategoryEntry.TABLE_NAME + " (" +
-                CategoryContract.CategoryEntry.COLUMN_C_ID +" INTEGER PRIMARY KEY AUTOINCREMENT, " +
+        String SQL_CATEGORY_CREATE_TABLE = "CREATE TABLE " + CategoryContract.CategoryEntry.TABLE_NAME + " (" +
+                CategoryContract.CategoryEntry.COLUMN_C_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 CategoryContract.CategoryEntry.COLUMN_C_NAME + " VARCHAR(30) NOT NULL );";
 
 
@@ -47,28 +50,28 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CATEGORY_CREATE_TABLE);
 
         //insert statements for categories
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('vegetable')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('fruit')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('cake')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('chocolate')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('bread')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('softDrink')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('coldDrink')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('juice')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('milkshake')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('water')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('milk')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('pudding')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('iceCream')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('sauce')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('jam')");
-        db.execSQL("INSERT INTO "+ CategoryContract.CategoryEntry.TABLE_NAME +" (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME +" ) VALUES ('butter')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('vegetable')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('fruit')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('cake')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('chocolate')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('bread')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('softDrink')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('coldDrink')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('juice')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('milkshake')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('water')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('milk')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('pudding')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('iceCream')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('sauce')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('jam')");
+        db.execSQL("INSERT INTO " + CategoryContract.CategoryEntry.TABLE_NAME + " (  " + CategoryContract.CategoryEntry.COLUMN_C_NAME + " ) VALUES ('butter')");
     }
 
     //This is called when the database needs to be upgraded.
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String SQL_DROP_TABLE ="DROP TABLE IF EXISTS "+ CategoryContract.CategoryEntry.TABLE_NAME +" ;";
+        String SQL_DROP_TABLE = "DROP TABLE IF EXISTS " + CategoryContract.CategoryEntry.TABLE_NAME + " ;";
         db.execSQL(SQL_DROP_TABLE);
     }
 
@@ -81,7 +84,7 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + CategoryContract.CategoryEntry.TABLE_NAME + " where " +
                 CategoryContract.CategoryEntry.COLUMN_C_NAME + " =?", new String[]{category});
 
-        if(cursor.getCount()>0) return true;
+        if (cursor.getCount() > 0) return true;
         else return false;
     }
 
@@ -90,16 +93,16 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
       @param category
       * It returns the id of the passed category  if exists else returns -1;
      */
-    public long getCID(String category){
-        SQLiteDatabase db=this.getReadableDatabase();
+    public long getCID(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
 
         //query to get rid of the category
-        Cursor cursor=db.rawQuery("SELECT " + CategoryContract.CategoryEntry.COLUMN_C_ID + " FROM " + CategoryContract.CategoryEntry.TABLE_NAME + " WHERE " +
+        Cursor cursor = db.rawQuery("SELECT " + CategoryContract.CategoryEntry.COLUMN_C_ID + " FROM " + CategoryContract.CategoryEntry.TABLE_NAME + " WHERE " +
                 CategoryContract.CategoryEntry.COLUMN_C_NAME + " = ?", new String[]{category});
-        if (cursor.getCount()>0) {
+        if (cursor.getCount() > 0) {
             String C_ID;
-            if (cursor.moveToFirst()){
-                while(!cursor.isAfterLast()){
+            if (cursor.moveToFirst()) {
+                while (!cursor.isAfterLast()) {
                     C_ID = cursor.getString(cursor.getColumnIndex(CategoryContract.CategoryEntry.COLUMN_C_ID));
                     cursor.moveToNext();
                     cursor.close();
@@ -112,4 +115,23 @@ public class CategoryDbHelper extends SQLiteOpenHelper {
         return 0;
     }
 
+    public String getCategory(long C_ID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String ID = toString().valueOf(C_ID);
+        Cursor cursor = db.rawQuery("SELECT " + CategoryContract.CategoryEntry.COLUMN_C_NAME + "FROM " + CategoryContract.CategoryEntry.TABLE_NAME +
+                " WHERE " + CategoryContract.CategoryEntry.COLUMN_C_ID + "=?", new String[]{ID});
+        String category=null;
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                while (!cursor.isAfterLast()) {
+                    category = cursor.getString(cursor.getColumnIndex(CategoryContract.CategoryEntry.COLUMN_C_NAME));
+                    cursor.moveToNext();
+                    cursor.close();
+                    return category;
+                }
+
+            }
+        }
+        return category;
+    }
 }
