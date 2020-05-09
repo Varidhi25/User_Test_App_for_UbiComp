@@ -56,8 +56,10 @@ public class Login extends AppCompatActivity {
                       Toast.makeText(getApplicationContext(),"Login successful, Welcome back.", Toast.LENGTH_SHORT).show();
 
                       //opens query page after successful login
-                      Intent subscribe=new Intent(Login.this,Query.class);
-                      startActivity(subscribe);
+                      Intent query=new Intent(Login.this,Query.class);
+                      query.putExtra("rEmail",Email);
+                      startActivity(query);
+
                       finish();
                   }
                   //if email or password doesnt match

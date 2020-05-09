@@ -15,6 +15,7 @@ import com.example.android.userapp.Adapter.myAdapter;
 
 public class Display extends AppCompatActivity {
 
+    String rEmail;
     SensorObjectDbHelper sdb;
     ArrayList<details> detailsArrayList;
     myAdapter myAdapter;
@@ -24,6 +25,7 @@ public class Display extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
+        rEmail=getIntent().getExtras().getString("rEmail");
         sdb=new SensorObjectDbHelper(this);
         l1=(ListView) findViewById(R.id.displayListView);
         detailsArrayList=new ArrayList<>();
@@ -34,6 +36,7 @@ public class Display extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(Display.this,Query.class);
+                i.putExtra("rEmail",rEmail);
                 startActivity(i);
                 finish();
             }

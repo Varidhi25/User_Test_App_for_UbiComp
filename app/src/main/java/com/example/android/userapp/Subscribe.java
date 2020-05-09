@@ -130,8 +130,9 @@ public class Subscribe extends AppCompatActivity {
                         db.insertItem(R_ID, selectedC.get(i));
 
                     //open query page
-                    Intent subscribe = new Intent(Subscribe.this, Query.class);
-                    startActivity(subscribe);
+                    Intent query = new Intent(Subscribe.this, Query.class);
+                     query.putExtra("rEmail",rEmail);
+                    startActivity(query);
                     finish();
                 }
             }

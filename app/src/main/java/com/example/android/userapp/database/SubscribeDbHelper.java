@@ -74,4 +74,14 @@ public class SubscribeDbHelper extends SQLiteOpenHelper {
         long insert= db.insert(SubscribeContract.SubscribeEntry.TABLE_NAME,null,contentValues);
     }
 
+    public boolean subscriber(long R_ID,long C_ID){
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ SubscribeContract.SubscribeEntry.TABLE_NAME + " WHERE "+
+                SubscribeContract.SubscribeEntry.COLUMN_R_ID +"=? AND "+
+                SubscribeContract.SubscribeEntry.COLUMN_C_ID +"=? ;",new String[]{toString().valueOf(R_ID),toString().valueOf(C_ID)});
+        if(cursor.getCount()>0)
+            return true;
+        else return false;
+    }
+
 }

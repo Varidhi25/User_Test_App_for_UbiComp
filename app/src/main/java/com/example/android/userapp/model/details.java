@@ -1,14 +1,15 @@
 package com.example.android.userapp.model;
 
 public class details {
-    String itemName,category,expDate;
+    String itemName,category,brand,expDate;
     int quantity;
 
     public details() {
     }
-   public details(String name,String c,int q,String date){
+   public details(String name,String c,String b,int q,String date){
         itemName=name;
         category=c;
+        brand=b;
         expDate=date;
         quantity=q;
    }
@@ -18,6 +19,14 @@ public class details {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getCategory() {

@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/a_itemName"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:layout_gravity="center"
             android:textSize="20sp"
             android:text="itemName"
@@ -28,7 +28,16 @@
         <TextView
             android:id="@+id/a_category"
             android:layout_width="259dp"
-            android:layout_height="30dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/amaranth"
+            android:text="category"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/a_brand"
+            android:layout_width="259dp"
+            android:layout_height="15dp"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:fontFamily="@font/amaranth"

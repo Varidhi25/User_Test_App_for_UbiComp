@@ -9,6 +9,7 @@ public class SensorObjectContract {
         public static final String COLUMN_S_NAME="S_Name";
         public static final String COLUMN_S_MCAT="S_mCategory";
         public static final String COLUMN_S_CAT_ID="S_CategoryID";
+        public static final String COLUMN_S_BRAND_ID="S_BrandID";
         public static final String COLUMN_S_QUANTITY="S_Quantity";
         public static final String COLUMN_S_EXP_DATE="S_ExpDate";
     }

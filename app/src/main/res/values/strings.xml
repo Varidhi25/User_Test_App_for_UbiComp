@@ -40,4 +40,23 @@
         <item>jam</item>
         <item>butter</item>
     </string-array>
+    <string-array name="Brand">
+        <item>amul</item>
+        <item>cadbury</item>
+        <item>nestle</item>
+        <item>hershey</item>
+        <item>bread</item>
+        <item>brittania</item>
+        <item>harvestGold</item>
+        <item>sprite</item>
+        <item>thumbsUp</item>
+        <item>pepsi</item>
+        <item>cococola</item>
+        <item>mirinda</item>
+        <item>fanta</item>
+        <item>mountainDew</item>
+        <item>frooti</item>
+        <item>nadini</item>
+        <item>tropicana</item>
+    </string-array>
 </resources>

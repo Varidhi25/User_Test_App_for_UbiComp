@@ -42,12 +42,14 @@ public class myAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.adapter_view_layout,null);
             TextView t_itemName=(TextView) convertView.findViewById(R.id.a_itemName);
             TextView t_category=(TextView) convertView.findViewById(R.id.a_category);
+            TextView t_brand=(TextView) convertView.findViewById(R.id.a_brand);
             TextView t_quantity=(TextView) convertView.findViewById(R.id.a_quantity);
             TextView t_expDate=(TextView) convertView.findViewById(R.id.a_expDate);
 
             details details=detailsArrayList.get(position);
             t_itemName.setText(details.getItemName());
             t_category.setText(details.getCategory());
+            t_brand.setText(details.getBrand());
             t_quantity.setText(toString().valueOf(details.getQuantity()));
             t_expDate.setText(details.getExpDate());
 
