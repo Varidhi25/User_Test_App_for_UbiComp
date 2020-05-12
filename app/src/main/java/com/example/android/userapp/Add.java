@@ -147,8 +147,9 @@ public class Add extends AppCompatActivity implements AdapterView.OnItemSelected
                 if(t1.getText().toString()=="" || t2.getText().toString()=="" || t3.getText().toString()=="" )
                     Toast.makeText(getApplicationContext(),"One or more fields are empty",Toast.LENGTH_SHORT).show();
                 else{
+                    category=s1.getSelectedItem().toString();
                     String itemName=t1.getText().toString().trim().toLowerCase();
-                    String mainCategory="solid";
+                    String mainCategory="semiSolid";
 
                     if(solid.contains(category)) {
                         mainCategory = "solid";
@@ -159,7 +160,7 @@ public class Add extends AppCompatActivity implements AdapterView.OnItemSelected
                     else if(semiSolid.contains(category)) {
                         mainCategory = "semiSold";
                     }
-                    category=s1.getSelectedItem().toString();
+
                     long C_ID=cdb.getCID(category);
                     brand=s2.getSelectedItem().toString();
                     long B_ID=bdb.getBID(brand);
