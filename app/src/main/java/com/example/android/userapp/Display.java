@@ -44,7 +44,7 @@ public class Display extends AppCompatActivity {
     }
 
     private void loadDataInListView() {
-        detailsArrayList=sdb.getAllData();
+        detailsArrayList=sdb.getAllData(detailsArrayList);
      myAdapter = new myAdapter(this,detailsArrayList);
      l1.setAdapter(myAdapter);
      myAdapter.notifyDataSetChanged();

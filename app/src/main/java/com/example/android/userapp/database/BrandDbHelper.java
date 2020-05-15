@@ -63,6 +63,10 @@ public class BrandDbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('Frooti')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('tropicana')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('nandini')");
+        db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('none')");
+
+
+
     }
 
     //This is called when the database needs to be upgraded.

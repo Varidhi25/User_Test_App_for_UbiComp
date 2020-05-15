@@ -1,13 +1,23 @@
 package com.example.android.userapp.model;
 
 public class details {
-    String itemName,category,brand,expDate;
+    String itemName,mainCategory,category,brand,expDate;
     int quantity;
 
     public details() {
     }
-   public details(String name,String c,String b,int q,String date){
+
+    public String getMainCategory() {
+        return mainCategory;
+    }
+
+    public void setMainCategory(String mainCategory) {
+        this.mainCategory = mainCategory;
+    }
+
+    public details(String name, String mc, String c, String b, int q, String date){
         itemName=name;
+        mainCategory=mc;
         category=c;
         brand=b;
         expDate=date;

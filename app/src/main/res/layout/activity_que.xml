@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient"
+    tools:context=".que">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginLeft="13dp"
+        android:layout_marginTop="250dp"
+        android:paddingTop="40dp"
+        android:orientation="vertical"
+        android:textColor="@android:color/white"
+        app:errorEnabled="true">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/queInput"
+            android:layout_width="384dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter the item name"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </android.support.design.widget.TextInputLayout>
+
+  <Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="query"
+      android:id="@+id/queButton"
+      android:layout_gravity="center"
+      />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="back"
+        android:layout_gravity="center"
+        android:id="@+id/queBack"
+        android:layout_marginTop="20dp"
+        />
+</LinearLayout>

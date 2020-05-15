@@ -16,7 +16,7 @@ public class Query extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_query);
         b1=(Button) findViewById(R.id.displayButton);
-       // b2=(Button) findViewById(R.id.updateButton);
+        b2=(Button) findViewById(R.id.queryButton);
         b3=(Button) findViewById(R.id.addButton);
         b4=(Button) findViewById(R.id.deleteButton);
         Bundle bundle=getIntent().getExtras();
@@ -34,6 +34,16 @@ public class Query extends AppCompatActivity {
             }
         });
 
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent query=new Intent(Query.this, que.class);
+                query.putExtra("rEmail",rEmail);
+                startActivity(query);
+                finish();
+            }
+        });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -6,13 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
-import android.support.v4.database.CursorWindowCompat;
 
 import com.example.android.userapp.model.details;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class  SensorObjectDbHelper extends SQLiteOpenHelper {
     CategoryDbHelper cdb;
@@ -147,12 +144,13 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
     /**
      * Method to get all the details of item
      * @return ArrayList which contains the details such as itemName, category,quantity, expiry date
+     * @param detailsArrayList
      */
-      public ArrayList<details> getAllData(){
+      public ArrayList<details> getAllData(ArrayList<details> detailsArrayList){
           String category="vegetable", brand="amul";
-          ArrayList<details> detailsArrayList=new ArrayList<>();
           SQLiteDatabase db=this.getReadableDatabase();
           Cursor cursor=db.rawQuery("SELECT "+SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME +", "+
+                  SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT+", "+
                   SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID+", "+
                   SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID+", "+
                   SensorObjectContract.SensorObjectEntry.COLUMN_S_QUANTITY+", "+
@@ -160,43 +158,44 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
                   " FROM "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME+";",null);
            while(cursor.moveToNext()){
                String itemName=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME));
+               String mainCategoty=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT));
                long C_ID =cursor.getLong(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID));
                long B_ID =cursor.getLong(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID));
                int quantity=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_QUANTITY));
                String expDate=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_EXP_DATE));
                int ID=Integer.parseInt(toString().valueOf(C_ID));
                switch (ID){
-                   case 1:category="Vegetable";
+                   case 1:category="vegetable";
                            break;
-                   case 2:category="Fruit";
+                   case 2:category="fruit";
                            break;
-                   case 3:category="Cake";
+                   case 3:category="cake";
                        break;
-                   case 4:category="Chocolate";
+                   case 4:category="chocolate";
                           break;
-                   case 5:category="Bread";
+                   case 5:category="bread";
                        break;
-                   case 6:category="Soft Drink";
+                   case 6:category="softDrink";
                        break;
-                   case 7:category="Cold Drink";
+                   case 7:category="coldDrink";
                        break;
-                   case 8:category="Juice";
+                   case 8:category="juice";
                        break;
-                   case 9:category="Milkshake";
+                   case 9:category="milkshake";
                        break;
-                   case 10:category="Water";
+                   case 10:category="water";
                        break;
-                   case 11:category="Milk";
+                   case 11:category="milk";
                             break;
-                   case 12:category="Pudding";
+                   case 12:category="pudding";
                        break;
-                   case 13:category="Ice-cream";
+                   case 13:category="iceCream";
                        break;
-                   case 14:category="Sauce";
+                   case 14:category="sauce";
                        break;
-                   case 15:category="Jam";
+                   case 15:category="jam";
                        break;
-                   case 16:category="Butter";
+                   case 16:category="butter";
                        break;
                }
 
@@ -234,9 +233,9 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
                        break;
                    case 16:brand="nandini";
                        break;
-
+                   case 17:brand="none";
                }
-               details details=new details(itemName,category,brand,quantity,expDate);
+               details details=new details(itemName,mainCategoty,category,brand,quantity,expDate);
                detailsArrayList.add(details);
            }
            return detailsArrayList;
@@ -270,6 +269,92 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db=this.getWritableDatabase();
         db.delete(SensorObjectContract.SensorObjectEntry.TABLE_NAME, SensorObjectContract.SensorObjectEntry.COLUMN_S_ID +"=?",new String[]{toString().valueOf(S_ID)});
 
+    }
+    public ArrayList<details> getItemsBasedOnMcategory(String mainCategory){
+        ArrayList<details> detailsArrayList=new ArrayList<>();
+        SQLiteDatabase db=this.getReadableDatabase();
+        String category="vegetable",brand="amul";
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME +" WHERE "+ SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT +" =?",new String[]{mainCategory});
+        while(cursor.moveToNext()){
+            String itemName=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME));
+            int C_ID=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID));
+            int B_ID=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID));
+            int quantity =cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_QUANTITY));
+            String expDate=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_EXP_DATE));
+            switch (C_ID){
+                case 1:category="vegetable";
+                    break;
+                case 2:category="fruit";
+                    break;
+                case 3:category="cake";
+                    break;
+                case 4:category="chocolate";
+                    break;
+                case 5:category="bread";
+                    break;
+                case 6:category="softDrink";
+                    break;
+                case 7:category="coldDrink";
+                    break;
+                case 8:category="juice";
+                    break;
+                case 9:category="milkshake";
+                    break;
+                case 10:category="water";
+                    break;
+                case 11:category="milk";
+                    break;
+                case 12:category="pudding";
+                    break;
+                case 13:category="iceCream";
+                    break;
+                case 14:category="sauce";
+                    break;
+                case 15:category="jam";
+                    break;
+                case 16:category="butter";
+                    break;
+
+            }
+            switch (B_ID){
+                case 1:brand="cadbury";
+                    break;
+                case 2:brand="hershey";
+                    break;
+                case 3:brand="nestle";
+                    break;
+                case 4:brand="amul";
+                    break;
+                case 5:brand="brittania";;
+                    break;
+                case 6:brand="harvestGold";
+                    break;
+                case 7:brand="sprite";
+                    break;
+                case 8:brand="thumbsUp";
+                    break;
+                case 9:brand="pepsi";
+                    break;
+                case 10:brand="cococola";
+                    break;
+                case 11:brand="mirinda";
+                    break;
+                case 12:brand="fanta";
+                    break;
+                case 13:brand="mountainDew";
+                    break;
+                case 14:brand="Frooti";
+                    break;
+                case 15:brand="tropicana";
+                    break;
+                case 16:brand="nandini";
+                    break;
+                case 17:brand="none";
+            }
+            details d=new details(itemName,mainCategory,category,brand,quantity,expDate);
+            detailsArrayList.add(d);
+        }
+        return detailsArrayList;
     }
 
 }
