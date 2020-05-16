@@ -1,6 +1,8 @@
 package com.example.android.userapp.model;
 
-public class details {
+import java.io.Serializable;
+
+public class details implements Serializable {
     String itemName,mainCategory,category,brand,expDate;
     int quantity;
 

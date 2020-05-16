@@ -60,7 +60,7 @@ public class BrandDbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('mirinda')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('fanta')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('mountainDew')");
-        db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('Frooti')");
+        db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('frooti')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('tropicana')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('nandini')");
         db.execSQL("INSERT INTO " + BrandContract.BrandEntry.TABLE_NAME + " (  " + BrandContract.BrandEntry.COLUMN_B_NAME + " ) VALUES ('none')");

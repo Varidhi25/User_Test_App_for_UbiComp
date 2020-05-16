@@ -227,7 +227,7 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
                        break;
                    case 13:brand="mountainDew";
                        break;
-                   case 14:brand="Frooti";
+                   case 14:brand="frooti";
                        break;
                    case 15:brand="tropicana";
                        break;
@@ -343,7 +343,7 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
                     break;
                 case 13:brand="mountainDew";
                     break;
-                case 14:brand="Frooti";
+                case 14:brand="frooti";
                     break;
                 case 15:brand="tropicana";
                     break;

@@ -76,6 +76,8 @@ public class que extends AppCompatActivity {
                     //get the details of inputted item
                     itemArrayList=idb.getDetails(itemName);
                     s.query(itemArrayList);
+
+
                 }
             }
         });
@@ -88,27 +90,6 @@ public class que extends AppCompatActivity {
         return sb.toString();
     }
 
-  public void get(String mainCategory){
-     //   System.out.println(getApplicationContext());
 
-  }
-  public void basedCategory(String category){
-
-      ArrayList<details> CatBased =t1db.CategoryBased(category);
-      for(int i=0;i<CatBased.size();i++)
-          t2db.insertObject(CatBased.get(i).getItemName(),CatBased.get(i).getMainCategory(),CatBased.get(i).getCategory(),CatBased.get(i).getBrand(),CatBased.get(i).getQuantity(),CatBased.get(i).getExpDate());
-  }
-
-  public void basedBrand(String brand){
-      ArrayList<details> BrBased=t2db.BrandBased(brand);
-      for(int l=0;l<BrBased.size();l++)
-          t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
-  }
-  public void printData(){
-     ArrayList<details> all=t3db.getData();
-     for(int m=0;m<all.size();m++)
-         System.out.println(all.get(m).getItemName() +"   "+all.get(m).getBrand() +"   "+all.get(m).getQuantity() +"     "+all.get(m).getExpDate());
-
-  }
 
 }

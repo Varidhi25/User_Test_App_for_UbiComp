@@ -2,9 +2,12 @@ package com.example.android.userapp;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.android.userapp.Adapter.myAdapter;
 import com.example.android.userapp.database.SensorObjectContract;
 import com.example.android.userapp.database.SensorObjectDbHelper;
 import com.example.android.userapp.database.Temp1DbHelper;
@@ -158,6 +161,7 @@ public class sampleTree extends Application {
     Temp1DbHelper t1db;
     Temp2DbHelper t2db;
     Temp3DbHelper t3db;
+    myAdapter myAdapter;
     public SensorObjectDbHelper sdb;
     public sampleTree (Activity act)
     {
@@ -169,6 +173,7 @@ public class sampleTree extends Application {
         // Now here you can get getApplication()
     }
     public static TreeNode<String> getSet(ArrayList<details> d) {
+
       for(int i=0;i<d.size();i++){
           String mainCategory;
           Iterator<TreeNode<String>> itr = node.iterator();
@@ -354,29 +359,23 @@ public class sampleTree extends Application {
     }
 
     public void query(ArrayList<Item> item){
-
+        ArrayList<details> finall=new ArrayList<>();
 
         que q=new que();
         //check if category exists in fridge
-        //	System.out.println(mainCategoryList);
         for(int i=0;i<item.size();i++){
             t1db.deleteall();
             t2db.deleteall();
             t3db.deleteall();
             if(mainCategoryList.contains(item.get(i).getMainCategory())){
                // insertion into temp1 database
-                //q.get(item.get(i).getMainCategory());
                 ArrayList<details> MainCatBased =new ArrayList<>();
-                //   sdb=new SensorObjectDbHelper(getApplicationContext());
                 MainCatBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory());
 
                 //insert in temp1 database
-              //  Toast.makeText(getApplicationContext(),"mainCategory: "+MainCatBased,Toast.LENGTH_SHORT);
                 for(int j=0;j<MainCatBased.size();j++)
                     t1db.insertObject(MainCatBased.get(j).getItemName(),MainCatBased.get(j).getMainCategory(),MainCatBased.get(j).getCategory(),MainCatBased.get(j).getBrand(),MainCatBased.get(j).getQuantity(),MainCatBased.get(j).getExpDate());
 
-                //not going inside
-                //System.out.println(liquidList);
                 if(liquidList.contains(item.get(i).getCategory())){
                     ArrayList<details> CatBased =t1db.CategoryBased(item.get(i).getCategory());
 
@@ -386,24 +385,122 @@ public class sampleTree extends Application {
 
                     if(softDrinkBrandList.contains(item.get(i).getBrand())){
                         ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
-                       // System.out.println(BrBased.size());
+                       for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(coldDrinkBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
-
-
                     }
-                }
+                    else if(milkshakeBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(milkBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(juiceBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                       for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(waterBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+
+                }// end of liquid list
+
+                else if(solidList.contains(item.get(i).getCategory())){
+                    ArrayList<details> CatBased =t1db.CategoryBased(item.get(i).getCategory());
+
+                    for(int k=0;k<CatBased.size();k++)
+                        t2db.insertObject(CatBased.get(k).getItemName(),CatBased.get(k).getMainCategory(),CatBased.get(k).getCategory(),CatBased.get(k).getBrand(),CatBased.get(k).getQuantity(),CatBased.get(k).getExpDate());
+
+
+                    if(vegetableBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(fruitBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(chocolateBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(cakeBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(breadBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                }// end of solid list
+
+                if(semiSolidList.contains(item.get(i).getCategory())){
+                    ArrayList<details> CatBased =t1db.CategoryBased(item.get(i).getCategory());
+
+                    for(int k=0;k<CatBased.size();k++)
+                        t2db.insertObject(CatBased.get(k).getItemName(),CatBased.get(k).getMainCategory(),CatBased.get(k).getCategory(),CatBased.get(k).getBrand(),CatBased.get(k).getQuantity(),CatBased.get(k).getExpDate());
+
+
+                    if(puddingBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(iceCreamBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(jamBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(butterBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(sauceBrandList.contains(item.get(i).getBrand())){
+                        ArrayList<details> BrBased=t2db.BrandBased(item.get(i).getBrand());
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+
+
+                }// end of semi-solid list
             }//end of mainCategory
 
             //printing of data
             ArrayList<details> all=t3db.getData();
-          //  System.out.println(all.size());
+            for(int f=0;f<all.size();f++)
+                finall.add(all.get(f));
+//
 
-            for(int m=0;m<all.size();m++)
-                System.out.println(all.get(m).getItemName() +"   "+all.get(m).getBrand() +"   "+all.get(m).getQuantity() +"     "+all.get(m).getExpDate());
-           //  q.printData();
             }//end of for loop
+        Intent dis=new Intent(activity.getApplicationContext(),QueryDisplay.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable("details",finall);
+        dis.putExtras(bundle);
+        //dis.putExtra("details",finall);
+        dis.putExtra("rEmail",q.rEmail);
+        activity.getApplicationContext().startActivity(dis);
         }
-
-    }
+}
 

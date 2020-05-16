@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".que"></activity>
+        <activity android:name=".QueryDisplay"></activity>
+        <activity android:name=".que" />
         <activity android:name=".Delete" />
         <activity android:name=".Add" />
         <activity android:name=".Update" />
