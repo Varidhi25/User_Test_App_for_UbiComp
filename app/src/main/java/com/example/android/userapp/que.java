@@ -65,7 +65,10 @@ public class que extends AppCompatActivity {
                 else{
                     //construct the tree
                     detailsArrayList=sdb.getAllData(detailsArrayList);
+                    long start = System.currentTimeMillis();
                     treeRoot=s.getSet(detailsArrayList);
+                    long time = System.currentTimeMillis() - start;
+                    System.out.println("tree time in query page  " +time);
                    // System.out.println("TREE");
 //                    for (TreeNode<String> node : treeRoot) {
 //                        String indent = createIndent(node.getLevel());
@@ -75,7 +78,7 @@ public class que extends AppCompatActivity {
 
                     //get the details of inputted item
                     itemArrayList=idb.getDetails(itemName);
-                    s.query(itemArrayList);
+                    s.query(itemArrayList,rEmail);
 
 
                 }

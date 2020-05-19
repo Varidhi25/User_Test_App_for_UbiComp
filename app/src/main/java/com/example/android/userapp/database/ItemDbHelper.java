@@ -32,7 +32,7 @@ public class ItemDbHelper extends SQLiteOpenHelper {
                 ItemContract.ItemtEntry.COLUMN_I_MCAT + " VARCHAR(20) NOT NULL, "+
                 ItemContract.ItemtEntry.COLUMN_I_CAT + " VARCHAR(20) NOT NULL, " +
                 ItemContract.ItemtEntry.COLUMN_I_BRAND + " VARCHAR(20) NOT NULL, " +
-                "PRIMARY KEY( "+ItemContract.ItemtEntry.COLUMN_I_NAME +","+ItemContract.ItemtEntry.COLUMN_I_BRAND+") );";
+                "PRIMARY KEY( "+ItemContract.ItemtEntry.COLUMN_I_NAME +","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+") );";
         db.execSQL(SQL_ITEM_CREATE_TABLE);
         db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('coke','liquid','softDrink','cococola')");
         db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('coke','liquid','softDrink','pepsi')");
@@ -41,6 +41,9 @@ public class ItemDbHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('mango','liquid','juice','tropicana')");
         db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('mango','liquid','juice','amul')");
         db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('mango','liquid','juice','none')");
+        db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('mango','solid','fruit','none')");
+        db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('banana','solid','fruit','none')");
+        db.execSQL("INSERT INTO "+ItemContract.ItemtEntry.TABLE_NAME + "("+ItemContract.ItemtEntry.COLUMN_I_NAME+","+ItemContract.ItemtEntry.COLUMN_I_MCAT+","+ItemContract.ItemtEntry.COLUMN_I_CAT+","+ItemContract.ItemtEntry.COLUMN_I_BRAND+")VALUES('tomato','solid','vegetable','none')");
 
     }
 

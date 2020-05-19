@@ -52,6 +52,11 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY ("+ SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID +") REFERENCES "+ CategoryContract.CategoryEntry.TABLE_NAME +"(" + CategoryContract.CategoryEntry.COLUMN_C_ID +") "+
                 ");" ;
         db.execSQL(SQL_SENSOR_OBJECT_CREATE_TABLE);
+        db.execSQL("CREATE INDEX "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME +"_INDEX ON "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME+
+                " ( "+ SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME+"," +
+                SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT+ "," +
+                SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID+ "," +
+                SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID+");");
     }
 
     @Override
@@ -106,7 +111,10 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
     public void insertObject(String itemName, String category, long C_ID,long B_ID, int quantity, int year, int month, int day){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-      String expDate=year+"-"+month+"-"+day;
+        String expDate;
+        if(month+1>0 && month+1<=9)
+           expDate=year+"-0"+(month+1)+"-"+day;
+        else expDate=year+"-"+(month+1)+"-"+day;
         // These create an object with column rows and associated values
         contentValues.put(SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME,itemName);
         contentValues.put(SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT,category);
@@ -270,17 +278,106 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
         db.delete(SensorObjectContract.SensorObjectEntry.TABLE_NAME, SensorObjectContract.SensorObjectEntry.COLUMN_S_ID +"=?",new String[]{toString().valueOf(S_ID)});
 
     }
-    public ArrayList<details> getItemsBasedOnMcategory(String mainCategory){
+    public ArrayList<details> getItemsBasedOnMcategory(String mainCategory,long C_ID,long B_ID){
         ArrayList<details> detailsArrayList=new ArrayList<>();
         SQLiteDatabase db=this.getReadableDatabase();
         String category="vegetable",brand="amul";
-        Cursor cursor=db.rawQuery("SELECT * FROM "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME +" WHERE "+ SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT +" =?",new String[]{mainCategory});
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME +" WHERE "+ SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT +" =? AND "+ SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID + "=? AND "+  SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID + "=?",new String[]{mainCategory,toString().valueOf(C_ID),toString().valueOf(B_ID)});
+        while(cursor.moveToNext()){
+            String itemName=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME));
+            C_ID=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID));
+             B_ID=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID));
+            int quantity =cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_QUANTITY));
+            String expDate=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_EXP_DATE));
+            switch ((int)C_ID){
+                case 1:category="vegetable";
+                    break;
+                case 2:category="fruit";
+                    break;
+                case 3:category="cake";
+                    break;
+                case 4:category="chocolate";
+                    break;
+                case 5:category="bread";
+                    break;
+                case 6:category="softDrink";
+                    break;
+                case 7:category="coldDrink";
+                    break;
+                case 8:category="juice";
+                    break;
+                case 9:category="milkshake";
+                    break;
+                case 10:category="water";
+                    break;
+                case 11:category="milk";
+                    break;
+                case 12:category="pudding";
+                    break;
+                case 13:category="iceCream";
+                    break;
+                case 14:category="sauce";
+                    break;
+                case 15:category="jam";
+                    break;
+                case 16:category="butter";
+                    break;
+
+            }
+            switch ((int)B_ID){
+                case 1:brand="cadbury";
+                    break;
+                case 2:brand="hershey";
+                    break;
+                case 3:brand="nestle";
+                    break;
+                case 4:brand="amul";
+                    break;
+                case 5:brand="brittania";;
+                    break;
+                case 6:brand="harvestGold";
+                    break;
+                case 7:brand="sprite";
+                    break;
+                case 8:brand="thumbsUp";
+                    break;
+                case 9:brand="pepsi";
+                    break;
+                case 10:brand="cococola";
+                    break;
+                case 11:brand="mirinda";
+                    break;
+                case 12:brand="fanta";
+                    break;
+                case 13:brand="mountainDew";
+                    break;
+                case 14:brand="frooti";
+                    break;
+                case 15:brand="tropicana";
+                    break;
+                case 16:brand="nandini";
+                    break;
+                case 17:brand="none";
+            }
+            details d=new details(itemName,mainCategory,category,brand,quantity,expDate);
+            detailsArrayList.add(d);
+        }
+        return detailsArrayList;
+    }
+
+
+
+    public ArrayList<details> getExp(String date){
+        ArrayList<details> detailsArrayList=new ArrayList<>();
+        SQLiteDatabase db=this.getReadableDatabase();
+        String category="vegetable",brand="amul";
+        Cursor cursor=db.rawQuery("SELECT * FROM "+ SensorObjectContract.SensorObjectEntry.TABLE_NAME +" WHERE "+ SensorObjectContract.SensorObjectEntry.COLUMN_S_EXP_DATE +" =?",new String[]{date});
         while(cursor.moveToNext()){
             String itemName=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_NAME));
             int C_ID=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_CAT_ID));
             int B_ID=cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_BRAND_ID));
             int quantity =cursor.getInt(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_QUANTITY));
-            String expDate=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_EXP_DATE));
+            String mainCategory=cursor.getString(cursor.getColumnIndex(SensorObjectContract.SensorObjectEntry.COLUMN_S_MCAT));
             switch (C_ID){
                 case 1:category="vegetable";
                     break;
@@ -351,10 +448,13 @@ public class  SensorObjectDbHelper extends SQLiteOpenHelper {
                     break;
                 case 17:brand="none";
             }
-            details d=new details(itemName,mainCategory,category,brand,quantity,expDate);
+            details d=new details(itemName,mainCategory,category,brand,quantity,date);
             detailsArrayList.add(d);
         }
         return detailsArrayList;
+
     }
 
 }
+
+

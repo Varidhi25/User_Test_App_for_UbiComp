@@ -37,6 +37,7 @@ public class QueryDisplay extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println(rEmail);
                 Intent i=new Intent(QueryDisplay.this,Query.class);
                 i.putExtra("rEmail",rEmail);
                 startActivity(i);

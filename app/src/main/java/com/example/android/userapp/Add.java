@@ -164,8 +164,12 @@ public class Add extends AppCompatActivity implements AdapterView.OnItemSelected
                     long C_ID=cdb.getCID(category);
                     brand=s2.getSelectedItem().toString();
                     long B_ID=bdb.getBID(brand);
+                    String expDate;
                     //check if item already exists with same expiry date
-                    String expDate=eYear+"-"+eMonth+"-"+eDay;
+                    if(eMonth+1>0 && eMonth+1<=9)
+                         expDate=eYear+"-0"+eMonth+1+"-"+eDay;
+                    else
+                       expDate= eYear+"-"+eMonth+1+"-"+eDay;
                     long exists=sdb.itemExist(itemName,C_ID,B_ID,expDate);
                     //Toast.makeText(getApplicationContext(),rEmail+"",Toast.LENGTH_SHORT).show();
 
@@ -173,7 +177,8 @@ public class Add extends AppCompatActivity implements AdapterView.OnItemSelected
                     if(exists==-1)
                     {
                         quantity=Integer.parseInt(t2.getText().toString().trim());
-                        sdb.insertObject(itemName,mainCategory,C_ID,B_ID,quantity,eYear,eMonth,eDay);
+
+                          sdb.insertObject(itemName,mainCategory,C_ID,B_ID,quantity,eYear,eMonth,eDay);
 
                         boolean sub=s.subscriber(R_ID,C_ID);
                         //Toast.makeText(getApplicationContext(),sub+" : ",Toast.LENGTH_SHORT).show();

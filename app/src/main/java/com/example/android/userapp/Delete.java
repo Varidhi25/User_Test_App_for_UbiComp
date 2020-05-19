@@ -101,7 +101,10 @@ public class Delete extends AppCompatActivity implements AdapterView.OnItemSelec
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 eYear=year; eMonth=month; eDay=dayOfMonth;
-                expDate=eYear+"-"+eMonth+"-"+eDay;
+                if(eMonth+1>0 && eMonth+1<=9)
+                    expDate=year+"-0"+(month+1)+"-"+dayOfMonth;
+                else expDate=year+"-"+(month+1)+"-"+dayOfMonth;
+
             }
         };
 
@@ -118,6 +121,7 @@ public class Delete extends AppCompatActivity implements AdapterView.OnItemSelec
                     brand=s2.getSelectedItem().toString();
                     long C_ID=cdb.getCID(category);
                     long B_ID=bdb.getBID(brand);
+
                     long S_ID=sdb.itemExist(itemName,C_ID,B_ID,expDate);
                     //check if item exists or not
                     if(S_ID>0){
@@ -143,7 +147,7 @@ public class Delete extends AppCompatActivity implements AdapterView.OnItemSelec
                           //  Toast.makeText(getApplicationContext(),"Deleted Successfully.",Toast.LENGTH_SHORT).show();
                             long R_ID=rdb.getRID(rEmail);
                             boolean sub=s.subscriber(R_ID,C_ID);
-                            Toast.makeText(getApplicationContext(),sub+" : ",Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getApplicationContext(),sub+" : ",Toast.LENGTH_SHORT).show();
                             if(sub==true){
                                 String message=quantity+ " "+itemName+" "+category +" deleted. Available: "+quantity;
                                 NotificationCompat.Builder builder=new NotificationCompat.Builder(Delete.this,"personal_notification");

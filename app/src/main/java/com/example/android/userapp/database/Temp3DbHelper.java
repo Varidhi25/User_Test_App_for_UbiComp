@@ -43,6 +43,7 @@ public class Temp3DbHelper  extends SQLiteOpenHelper {
                 "PRIMARY KEY ("+ Temp3Contract.Temp3Entry.COLUMN_T3_NAME +", "+ Temp3Contract.Temp3Entry.COLUMN_T3_BRAND +", "+ Temp3Contract.Temp3Entry.COLUMN_T3_EXP_DATE+ ")"+
                 ");" ;
         db.execSQL(SQL_TEMP3_CREATE_TABLE);
+        db.execSQL("CREATE INDEX index1 ON "+ Temp3Contract.Temp3Entry.TABLE_NAME +" (" +Temp3Contract.Temp3Entry.COLUMN_T3_NAME+");");
     }
 
     @Override

@@ -102,4 +102,16 @@ public class BrandDbHelper extends SQLiteOpenHelper {
         } else return -1;
         return 0;
     }
+    public String getBrand(long B_ID){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        //query to get rid of the category
+        Cursor cursor = db.rawQuery("SELECT " + BrandContract.BrandEntry.COLUMN_B_NAME + " FROM " + BrandContract.BrandEntry.TABLE_NAME + " WHERE " +
+                BrandContract.BrandEntry.COLUMN_B_ID + " = ?", new String[]{toString().valueOf(B_ID)});
+        while(cursor.moveToNext()){
+            String brand=cursor.getString(cursor.getColumnIndex(BrandContract.BrandEntry.COLUMN_B_NAME));
+            return brand;
+        }
+        return null;
+    }
 }

@@ -19,9 +19,11 @@ import com.example.android.userapp.database.Temp3DbHelper;
 import com.example.android.userapp.model.details;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 class TreeNodeIter<T> implements Iterator<TreeNode<T>>
 {
@@ -136,26 +138,46 @@ class TreeNode<T> implements Iterable<TreeNode<T>> {
 public class sampleTree extends Application {
     public static TreeNode<String> ItemList;
     public static TreeNode<String> BrandList;
-    static List<String> mainCategoryList = new ArrayList<String>();
-    static List<String> solidList = new ArrayList<String>();
-    static List<String> semiSolidList = new ArrayList<String>();
-    public static List<String> liquidList = new ArrayList<String>();
-    static List<String> vegetableBrandList = new ArrayList<String>();
-    static List<String> fruitBrandList = new ArrayList<String>();
-    static List<String> cakeBrandList = new ArrayList<String>();
-    static List<String> chocolateBrandList = new ArrayList<String>();
-    static List<String> breadBrandList = new ArrayList<String>();
-    static List<String> softDrinkBrandList = new ArrayList<String>();
-    static List<String> coldDrinkBrandList = new ArrayList<String>();
-    static List<String> juiceBrandList = new ArrayList<String>();
-    static List<String> milkshakeBrandList = new ArrayList<String>();
-    static List<String> milkBrandList = new ArrayList<String>();
-    static List<String> waterBrandList = new ArrayList<String>();
-    static List<String> puddingBrandList = new ArrayList<String>();
-    static List<String> iceCreamBrandList = new ArrayList<String>();
-    static List<String> butterBrandList = new ArrayList<String>();
-    static List<String> sauceBrandList = new ArrayList<String>();
-    static List<String> jamBrandList = new ArrayList<String>();
+   // static List<String> mainCategoryList = new ArrayList<String>();
+    static Map<String, String> mainCategoryList=new HashMap<>();
+  //  static List<String> solidList = new ArrayList<String>();
+    static Map<String, String> solidList=new HashMap<>();
+ //   static List<String> semiSolidList = new ArrayList<String>();
+    static Map<String, String> semiSolidList=new HashMap<>();
+   // public static List<String> liquidList = new ArrayList<String>();
+    static Map<String, String> liquidList=new HashMap<>();
+  //  static List<String> vegetableBrandList = new ArrayList<String>();
+    static Map<String, String> vegetableBrandList=new HashMap<>();
+   // static List<String> fruitBrandList = new ArrayList<String>();
+    static Map<String, String> fruitBrandList=new HashMap<>();
+  //  static List<String> cakeBrandList = new ArrayList<String>();
+    static Map<String, String> cakeBrandList=new HashMap<>();
+  //  static List<String> chocolateBrandList = new ArrayList<String>();
+    static Map<String, String> chocolateBrandList=new HashMap<>();
+  //  static List<String> breadBrandList = new ArrayList<String>();
+    static Map<String, String> breadBrandList=new HashMap<>();
+ //   static List<String> softDrinkBrandList = new ArrayList<String>();
+    static Map<String, String> softDrinkBrandList=new HashMap<>();
+ //   static List<String> coldDrinkBrandList = new ArrayList<String>();
+    static Map<String, String> coldDrinkBrandList=new HashMap<>();
+//    static List<String> juiceBrandList = new ArrayList<String>();
+    static Map<String, String> juiceBrandList=new HashMap<>();
+ //   static List<String> milkshakeBrandList = new ArrayList<String>();
+    static Map<String, String> milkshakeBrandList=new HashMap<>();
+  //  static List<String> milkBrandList = new ArrayList<String>();
+    static Map<String, String> milkBrandList=new HashMap<>();
+  //  static List<String> waterBrandList = new ArrayList<String>();
+    static Map<String, String> waterBrandList=new HashMap<>();
+  //  static List<String> puddingBrandList = new ArrayList<String>();
+    static Map<String, String> puddingBrandList=new HashMap<>();
+  //  static List<String> iceCreamBrandList = new ArrayList<String>();
+    static Map<String, String> iceCreamBrandList=new HashMap<>();
+ //   static List<String> butterBrandList = new ArrayList<String>();
+    static Map<String, String> butterBrandList=new HashMap<>();
+ //   static List<String> sauceBrandList = new ArrayList<String>();
+    static Map<String, String> sauceBrandList=new HashMap<>();
+ //   static List<String> jamBrandList = new ArrayList<String>();
+    static Map<String, String> jamBrandList=new HashMap<>();
     static List<String> n3 = new ArrayList<String>();
     public static List<TreeNode<String>> node = new ArrayList<TreeNode<String>>();
     static String Container = "fridge";
@@ -190,8 +212,8 @@ public class sampleTree extends Application {
           //adding main category
           TreeNode<String> n=null;
           mainCategory =d.get(i).getMainCategory();
-          if(!mainCategoryList.contains(mainCategory)){
-              mainCategoryList.add(mainCategory);
+          if(!mainCategoryList.containsKey(mainCategory)){
+              mainCategoryList.put(mainCategory,mainCategory);
               n= root.addChild(mainCategory);
               node.add(n);
           }
@@ -205,15 +227,14 @@ public class sampleTree extends Application {
                   break;
               }
           }
-       //   Log.d("", "getSet: "+d.get(i).getCategory());
           String category=d.get(i).getCategory();
           ItemList=null;
 
 
           //adding category like solid,liquid or semi-solid
           if(mainCategory.equals("liquid")){
-              if(!liquidList.contains(category)){
-                  liquidList.add(category);
+              if(!liquidList.containsKey(category)){
+                  liquidList.put(category,category);
                   //System.out.println(liquidList);
                   ItemList = c.addChild(category);
                   node.add(ItemList);
@@ -221,15 +242,15 @@ public class sampleTree extends Application {
               }
           }
           else if(mainCategory.equals("solid")){
-              if(!solidList.contains(category)){
-                  solidList.add(category);
+              if(!solidList.containsKey(category)){
+                  solidList.put(category,category);
                   ItemList = c.addChild(category);
                   node.add(ItemList);
               }
           }
           else{
-              if(!semiSolidList.contains(category)){
-                  semiSolidList.add(category);
+              if(!semiSolidList.containsKey(category)){
+                  semiSolidList.put(category,category);
                   ItemList = c.addChild(category);
                   node.add(ItemList);
               }
@@ -250,113 +271,113 @@ public class sampleTree extends Application {
 
           //adding brand
           if(category.equals("vegetable")){
-              if(!vegetableBrandList.contains(brand)){
-                  vegetableBrandList.add(brand);
+              if(!vegetableBrandList.containsKey(brand)){
+                  vegetableBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("fruit")){
-              if(!fruitBrandList.contains(brand)){
-                  fruitBrandList.add(brand);
+              if(!fruitBrandList.containsKey(brand)){
+                  fruitBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("chocolate")){
-              if(!chocolateBrandList.contains(brand)){
-                  chocolateBrandList.add(brand);
+              if(!chocolateBrandList.containsKey(brand)){
+                  chocolateBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("cake")){
-              if(!cakeBrandList.contains(brand)){
-                  cakeBrandList.add(brand);
+              if(!cakeBrandList.containsKey(brand)){
+                  cakeBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("bread")){
-              if(!breadBrandList.contains(brand)){
-                  breadBrandList.add(brand);
+              if(!breadBrandList.containsKey(brand)){
+                  breadBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("softDrink")){
-              if(!softDrinkBrandList.contains(brand)){
-                  softDrinkBrandList.add(brand);
+              if(!softDrinkBrandList.containsKey(brand)){
+                  softDrinkBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("coldDrink")){
-              if(!coldDrinkBrandList.contains(brand)){
-                  coldDrinkBrandList.add(brand);
+              if(!coldDrinkBrandList.containsKey(brand)){
+                  coldDrinkBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("juice")){
-              if(!juiceBrandList.contains(brand)){
-                  juiceBrandList.add(brand);
+              if(!juiceBrandList.containsKey(brand)){
+                  juiceBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("milkshake")){
-              if(!milkshakeBrandList.contains(brand)){
-                  milkshakeBrandList.add(brand);
+              if(!milkshakeBrandList.containsKey(brand)){
+                  milkshakeBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("milk")){
-              if(!milkBrandList.contains(brand)){
-                  milkBrandList.add(brand);
+              if(!milkBrandList.containsKey(brand)){
+                  milkBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("water")){
-              if(!waterBrandList.contains(brand)){
-                  waterBrandList.add(brand);
+              if(!waterBrandList.containsKey(brand)){
+                  waterBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("pudding")){
-              if(!puddingBrandList.contains(brand)){
-                  puddingBrandList.add(brand);
+              if(!puddingBrandList.containsKey(brand)){
+                  puddingBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("iceCream")){
-              if(!iceCreamBrandList.contains(brand)){
-                  iceCreamBrandList.add(brand);
+              if(!iceCreamBrandList.containsKey(brand)){
+                  iceCreamBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("sauce")){
-              if(!sauceBrandList.contains(brand)){
-                  sauceBrandList.add(brand);
+              if(!sauceBrandList.containsKey(brand)){
+                  sauceBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("jam")){
-              if(!jamBrandList.contains(brand)){
-                  jamBrandList.add(brand);
+              if(!jamBrandList.containsKey(brand)){
+                  jamBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
           }
           else if(category.equals("butter")){
-              if(!butterBrandList.contains(brand)){
-                  butterBrandList.add(brand);
+              if(!butterBrandList.containsKey(brand)){
+                  butterBrandList.put(brand,brand);
                   BrandList = c2.addChild(brand);
                   node.add(BrandList);
               }
@@ -377,7 +398,7 @@ public class sampleTree extends Application {
             t1db.deleteall();
             t2db.deleteall();
             t3db.deleteall();
-            if(mainCategoryList.contains(item.get(i).getMainCategory())){
+            if(mainCategoryList.containsKey(item.get(i).getMainCategory())){
                // insertion into temp1 database
              //   ArrayList<details> MainCatBased =new ArrayList<>();
                // System.out.println(solidList);
@@ -387,49 +408,50 @@ public class sampleTree extends Application {
 //                for(int j=0;j<MainCatBased.size();j++)
 //                    t1db.insertObject(MainCatBased.get(j).getItemName(),MainCatBased.get(j).getMainCategory(),MainCatBased.get(j).getCategory(),MainCatBased.get(j).getBrand(),MainCatBased.get(j).getQuantity(),MainCatBased.get(j).getExpDate());
 
-                if(liquidList.contains(item.get(i).getCategory())){
+                if(liquidList.containsKey(item.get(i).getCategory())){
 //                    ArrayList<details> CatBased =t1db.CategoryBased(item.get(i).getCategory());
 //
 //                    for(int k=0;k<CatBased.size();k++)
 //                        t2db.insertObject(CatBased.get(k).getItemName(),CatBased.get(k).getMainCategory(),CatBased.get(k).getCategory(),CatBased.get(k).getBrand(),CatBased.get(k).getQuantity(),CatBased.get(k).getExpDate());
 
 
-                    if(softDrinkBrandList.contains(item.get(i).getBrand())){
+                    if(softDrinkBrandList.containsKey(item.get(i).getBrand())){
+                        long B_ID=bdb.getBID(item.get(i).getBrand());
+                        long C_ID=cdb.getCID(item.get(i).getCategory());
+                        ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
+
+                        for(int l=0;l<BrBased.size();l++)
+                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
+                    }
+                    else if(coldDrinkBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(coldDrinkBrandList.contains(item.get(i).getBrand())){
+                    else if(milkshakeBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(milkshakeBrandList.contains(item.get(i).getBrand())){
+                    else if(milkBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(milkBrandList.contains(item.get(i).getBrand())){
+                    else if(juiceBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(juiceBrandList.contains(item.get(i).getBrand())){
-                        long B_ID=bdb.getBID(item.get(i).getBrand());
-                        long C_ID=cdb.getCID(item.get(i).getCategory());
-                        ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
-                        for(int l=0;l<BrBased.size();l++)
-                            t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
-                    }
-                    else if(waterBrandList.contains(item.get(i).getBrand())){
+                    else if(waterBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
@@ -439,42 +461,42 @@ public class sampleTree extends Application {
 
                 }// end of liquid list
 
-                 else if(solidList.contains(item.get(i).getCategory())){
+                 else if(solidList.containsKey(item.get(i).getCategory())){
 //                     ArrayList<details> CatBased =t1db.CategoryBased(item.get(i).getCategory());
 //
 //                    for(int k=0;k<CatBased.size();k++)
 //                        t2db.insertObject(CatBased.get(k).getItemName(),CatBased.get(k).getMainCategory(),CatBased.get(k).getCategory(),CatBased.get(k).getBrand(),CatBased.get(k).getQuantity(),CatBased.get(k).getExpDate());
 
 
-                    if(vegetableBrandList.contains(item.get(i).getBrand())){
+                    if(vegetableBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(fruitBrandList.contains(item.get(i).getBrand())){
+                    else if(fruitBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(chocolateBrandList.contains(item.get(i).getBrand())){
+                    else if(chocolateBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(cakeBrandList.contains(item.get(i).getBrand())){
+                    else if(cakeBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(breadBrandList.contains(item.get(i).getBrand())){
+                    else if(breadBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
@@ -483,21 +505,21 @@ public class sampleTree extends Application {
                     }
                 }// end of solid list
 
-                if(semiSolidList.contains(item.get(i).getCategory())){
+                if(semiSolidList.containsKey(item.get(i).getCategory())){
 //                    ArrayList<details> CatBased =t1db.CategoryBased(item.get(i).getCategory());
 //
 //                    for(int k=0;k<CatBased.size();k++)
 //                        t2db.insertObject(CatBased.get(k).getItemName(),CatBased.get(k).getMainCategory(),CatBased.get(k).getCategory(),CatBased.get(k).getBrand(),CatBased.get(k).getQuantity(),CatBased.get(k).getExpDate());
 
 
-                    if(puddingBrandList.contains(item.get(i).getBrand())){
+                    if(puddingBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(iceCreamBrandList.contains(item.get(i).getBrand())){
+                    else if(iceCreamBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
@@ -505,21 +527,21 @@ public class sampleTree extends Application {
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
 
                     }
-                    else if(jamBrandList.contains(item.get(i).getBrand())){
+                    else if(jamBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(butterBrandList.contains(item.get(i).getBrand())){
+                    else if(butterBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);
                         for(int l=0;l<BrBased.size();l++)
                             t3db.insertObject(BrBased.get(l).getItemName(),BrBased.get(l).getMainCategory(),BrBased.get(l).getCategory(),BrBased.get(l).getBrand(),BrBased.get(l).getQuantity(),BrBased.get(l).getExpDate());
                     }
-                    else if(sauceBrandList.contains(item.get(i).getBrand())){
+                    else if(sauceBrandList.containsKey(item.get(i).getBrand())){
                         long B_ID=bdb.getBID(item.get(i).getBrand());
                         long C_ID=cdb.getCID(item.get(i).getCategory());
                         ArrayList<details> BrBased=sdb.getItemsBasedOnMcategory(item.get(i).getMainCategory(),C_ID,B_ID);

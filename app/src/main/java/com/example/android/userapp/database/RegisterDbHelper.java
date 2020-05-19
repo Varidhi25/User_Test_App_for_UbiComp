@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class RegisterDbHelper extends SQLiteOpenHelper {
     public static final String LOG_TAG = RegisterDbHelper.class.getSimpleName();
 
@@ -134,5 +136,16 @@ public class RegisterDbHelper extends SQLiteOpenHelper {
 
         } else return -1;
         return 0;
+    }
+
+    public ArrayList<String> getEmail(){
+        ArrayList<String> emailList=new ArrayList<>();
+        SQLiteDatabase db=this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM "+ RegisterContract.RegisterEntry.TABLE_NAME, null);
+        while(cursor.moveToNext()){
+            String email= cursor.getString(cursor.getColumnIndex(RegisterContract.RegisterEntry.COLUMN_R_EMAIL));
+            emailList.add(email);
+        }
+        return  emailList;
     }
 }
